@@ -30,7 +30,7 @@ command_state = {
 
 override = False
 
-EXPORT_ONNX = True
+EXPORT_ONNX = False
 
 
 def dict_compare(d1, d2):
