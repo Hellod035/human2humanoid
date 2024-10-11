@@ -38,7 +38,7 @@ checkpoint: 0
 joystick: False
 tmp_freeze_upper: False
 max_iterations: 1000000
-horovod: False
+horovod: True
 resume: False
 experiment_name: null
 run_name: null
