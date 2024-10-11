@@ -1,0 +1,61 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train OmniH2O_TEACHER",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/train_hydra.py",
+            "args": [
+                "task=h1:teleop",
+                "run_name=OmniH2O_TEACHER",
+                "env.num_observations=913",
+                "env.num_privileged_obs=990",
+                "motion.teleop_obs_version=v-teleop-extend-max-full",
+                "motion=motion_full",
+                "motion.extend_head=True",
+                "num_envs=512",
+                "asset.zero_out_far=False",
+                "asset.termination_scales.max_ref_motion_distance=1.5",
+                "sim_device=cuda:0",
+                "motion.motion_file=resources/motions/h1/amass_phc_filtered.pkl",
+                "rewards=rewards_teleop_omnih2o_teacher",
+                "rewards.penalty_curriculum=True",
+                "rewards.penalty_scale=0.5"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/legged_gym"
+        },
+        {
+            "name": "Play OmniH2O_TEACHER",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/play_hydra.py",
+            "args": [
+                "task=h1:teleop",
+                "env.num_observations=913",
+                "env.num_privileged_obs=990",
+                "motion.future_tracks=True",
+                "motion.teleop_obs_version=v-teleop-extend-max-full",
+                "motion=motion_full",
+                "motion.extend_head=True",
+                "asset.zero_out_far=False",
+                "asset.termination_scales.max_ref_motion_distance=10.0",
+                "sim_device=cuda:0",
+                "motion.motion_file=resources/motions/h1/amass_phc_filtered.pkl",
+                "rewards=rewards_teleop_omnih2o_teacher",
+                "load_run=24_10_11_01-28-50_OmniH2O_TEACHER",
+                "checkpoint=14500",
+                "num_envs=1",
+                "headless=False"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+
+    ]
+}
