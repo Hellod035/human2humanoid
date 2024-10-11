@@ -1,0 +1,32 @@
+defaults:
+  - config_teleop
+
+run_name: OmniH2O_STUDENT
+num_envs: 8192
+
+env:
+  num_observations: 1665
+  num_privileged_obs: 1742
+  add_short_history: True
+  short_history_length: 25
+
+motion:
+  teleop_obs_version: v-teleop-extend-vr-max-nolinvel
+  teleop_selected_keypoints_names : []
+
+train:
+  distill: True
+  policy:
+    init_noise_std: 0.001
+  dagger:
+    dagger_only: True
+
+noise:
+  add_noise: False
+  noise_level: 0
+
+  
+
+
+
+

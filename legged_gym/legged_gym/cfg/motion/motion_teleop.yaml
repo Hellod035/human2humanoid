@@ -5,15 +5,15 @@ terrain_level_down_distance : 0.5
 num_markers : 19
 
 
-# motion_file : 'resources/motions/h1/amass_phc_filtered.pkl'
-motion_file : 'resources/motions/h1/stable_punch.pkl'
+motion_file : 'resources/motions/h1/amass_phc_filtered.pkl'
+# motion_file : 'resources/motions/h1/stable_punch.pkl'
 skeleton_file : 'resources/robots/h1/xml/h1.xml'
 marker_file : 'resources/objects/Marker/traj_marker.urdf'
 num_dof_pos_reference : 19
 num_dof_vel_reference : 19
 
 extend_hand: True
-extend_head: False
+extend_head: True
 
 future_tracks: False
 num_traj_samples: 1
