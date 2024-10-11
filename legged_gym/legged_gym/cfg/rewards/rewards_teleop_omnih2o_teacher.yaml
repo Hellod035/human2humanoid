@@ -21,7 +21,7 @@ scales:
   orientation : -200.0
   feet_height : -0
   feet_max_height_for_this_air : -2500
-  
+  feet_slide : -10.0
 
 
   # torques : 0
@@ -124,7 +124,7 @@ teleop_body_pos_sigma_scaling_down_coef : 0.999
 # teleop_joint_pos_small_sigma : 0.1 # 0.5 -> 0.1 lower body
 teleop_joint_pos_sigma : 0.5 
 teleop_joint_vel_sigma : 10 # 10 -> 5
-teleop_body_pos_lowerbody_sigma : 0.5 # 0.01
+teleop_body_pos_lowerbody_sigma : 0.01 # 0.01
 teleop_body_pos_0dot5sigma : 0.5 # 0.01
 teleop_body_pos_upperbody_sigma : 0.03 # -> 0.03
 teleop_body_pos_vr_3keypoints_sigma : 0.03 # 0.002->0.03
@@ -171,7 +171,7 @@ reward_position_sigma_level_up_threshold: 50
 reward_position_sigma_level_down_threshold: 120
 
 penalty_curriculum: True
-penalty_scale : 1.0
+penalty_scale : 0.5
 penalty_scale_range: [0.25, 1.0]
 penalty_level_down_threshold: 50
 penalty_level_up_threshold: 120
@@ -194,4 +194,6 @@ penalty_reward_names : [  "torques",
   "feet_ori",
   "orientation",
   "in_the_air",
-  "stable_lower_when_vrclose"]
+  "stable_lower_when_vrclose",
+  "feet_slide"
+  ]

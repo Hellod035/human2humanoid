@@ -2988,6 +2988,7 @@ class LeggedRobot(BaseTask):
 
         # save body names from the asset
         body_names = self.gym.get_asset_rigid_body_names(robot_asset)
+        self.body_names = body_names
         self.dof_names = self.gym.get_asset_dof_names(robot_asset)
         # import pdb; pdb.set_trace()
         self.num_bodies = len(body_names)
@@ -4065,6 +4066,15 @@ class LeggedRobot(BaseTask):
         ## hardcode zc, soft on torso
         return torch.sum(torch.square(self.dof_pos[:, 11:]-self.default_dof_pos[:, 11:]), dim=1) + 0.1*torch.abs(self.dof_pos[:, 10] - self.default_dof_pos[:, 10])
     
+    def _reward_feet_slide(self):
+        # Penalize feet sliding
+        feet_xy_vel = torch.abs(self._rigid_body_state_reshaped[:, self.feet_indices, 7:9]).sum(dim=-1)
+        contact = self.contact_forces[:, self.feet_indices, 2] > 1.
+        contact_filt = torch.logical_or(contact, self.last_contacts) 
+        dragging_vel = contact_filt * feet_xy_vel
+        reward = dragging_vel.sum(dim=-1)
+        return reward
+
     def render(self, sync_frame_time=False):
         # if self.viewer:
             # self._update_camera()

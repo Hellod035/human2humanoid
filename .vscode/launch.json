@@ -11,7 +11,9 @@
             "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/train_hydra.py",
             "args": [
                 "--config-name=config_teleop_teacher",
-                "use_wandb=False"
+                "use_wandb=False",
+                "num_envs=1",
+                "headless=False"
             ],
             "console": "integratedTerminal",
             "justMyCode": false,
@@ -28,7 +30,7 @@
                 "motion.future_tracks=True",
                 "asset.termination_scales.max_ref_motion_distance=10.0",
                 "load_run=24_10_11_01-28-50_OmniH2O_TEACHER",
-                "checkpoint=17500",
+                "checkpoint=26500",
                 "headless=False"
             ],
             "console": "integratedTerminal",
