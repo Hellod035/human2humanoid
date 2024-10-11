@@ -2,7 +2,7 @@ conda activate omnih2o
 cd ~/projects/human2humanoid/legged_gym
 cd /opt/data/private/SWD_ROOT/human2humanoid/legged_gym
 
-# OmniH2O Training and Playing Teacher Policy 
+# OmniH2O Training Teacher Policy 
 python legged_gym/scripts/train_hydra.py \
 --config-name=config_teleop_teacher
 
