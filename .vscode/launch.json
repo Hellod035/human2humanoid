@@ -29,14 +29,50 @@
                 "num_envs=1",
                 "motion.future_tracks=True",
                 "asset.termination_scales.max_ref_motion_distance=10.0",
-                "load_run=24_10_11_01-28-50_OmniH2O_TEACHER",
-                "checkpoint=26500",
+                "load_run=24_10_11_20-54-47_OmniH2O_TEACHER",
+                "checkpoint=0",
                 "headless=False"
             ],
             "console": "integratedTerminal",
             "justMyCode": false,
             "cwd": "${workspaceFolder}/legged_gym"
         },
+        {
+            "name": "Train OmniH2O_STUDENT",
+            "type": "debugpy", 
+            "request": "launch",
+            "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/train_hydra.py",
+            "args": [
+                "--config-name=config_teleop_student",
+                "train.dagger.load_run_dagger=24_10_11_20-54-47_OmniH2O_TEACHER",
+                "train.dagger.checkpoint_dagger=0",
+                "use_wandb=False",
+                "num_envs=1",
+                "headless=False"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}/legged_gym"
+        },
+        {
+            "name": "Play OmniH2O_STUDENT",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/play_hydra.py",
+            "args": [
+                "--config-name=config_teleop_student",
+                "num_envs=1",
+                "train.dagger.load_run_dagger=24_10_11_20-54-47_OmniH2O_TEACHER",
+                "train.dagger.checkpoint_dagger=0",
+                "asset.termination_scales.max_ref_motion_distance=10.0",
+                "load_run=24_10_11_20-56-57_OmniH2O_STUDENT",
+                "checkpoint=0",
+                "headless=False"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}/legged_gym"
+        }
 
     ]
 }
